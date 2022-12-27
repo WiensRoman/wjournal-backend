@@ -2,7 +2,8 @@ import {
   Entity,
   Column,
   PrimaryGeneratedColumn,
-  CreateDateColumn, UpdateDateColumn,
+  CreateDateColumn,
+  UpdateDateColumn,
 } from 'typeorm';
 
 @Entity('posts')
@@ -15,6 +16,11 @@ export class PostEntity {
 
   @Column()
   body: string;
+
+  @Column({
+    default: 0,
+  })
+  views: number;
 
   @Column({ nullable: true })
   tags?: string;
