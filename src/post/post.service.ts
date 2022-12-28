@@ -84,11 +84,19 @@ export class PostService {
       })
       .execute();
 
-    return this.repository.findOne(id);
+    return this.repository.findOne({
+      where: {
+        id: id,
+      },
+    });
   }
 
   async update(id: number, dto: UpdatePostDto) {
-    const find = await this.repository.findOne(+id);
+    const find = await this.repository.findOne({
+      where: {
+        id: id,
+      },
+    });
 
     if (!find) {
       throw new NotFoundException('Статья не найдена');
@@ -98,7 +106,11 @@ export class PostService {
   }
 
   async remove(id: number) {
-    const find = await this.repository.findOne(+id);
+    const find = await this.repository.findOne({
+      where: {
+        id: id,
+      },
+    });
 
     if (!find) {
       throw new NotFoundException('Статья не найдена');
