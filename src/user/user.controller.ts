@@ -1,13 +1,12 @@
 import {
   Controller,
   Get,
-  Post,
   Body,
   Patch,
   Param,
-  Delete,
   UseGuards,
-  Request, Query,
+  Request,
+  Query,
 } from '@nestjs/common';
 import { UserService } from './user.service';
 import { UpdateUserDto } from './dto/update-user.dto';
@@ -26,7 +25,7 @@ export class UserController {
   @UseGuards(JwtAuthGuard)
   @Get('me')
   getProfile(@Request() req) {
-    return req.user;
+    return this.userService.findById(req.user.id);
   }
 
   @UseGuards(JwtAuthGuard)

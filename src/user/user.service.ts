@@ -23,7 +23,11 @@ export class UserService {
   }
 
   findById(id: number) {
-    return `This action returns a #${id} user`;
+    return this.repository.findOne({
+      where: {
+        id: id,
+      },
+    });
   }
 
   findByCond(cond: LoginUserDto) {
