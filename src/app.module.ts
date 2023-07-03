@@ -13,16 +13,14 @@ import { AuthModule } from './auth/auth.module';
 @Module({
   imports: [
     TypeOrmModule.forRoot({
-      url: 'postgres://wiensr:jYvOfy5Gk8oRxfOb1ZFdfotUcrQv23Ai@dpg-ciffrm59aq09mhn6rieg-a.frankfurt-postgres.render.com/wjournal',
       type: 'postgres',
-      host: 'dpg-ciffrm59aq09mhn6rieg-a',
+      host: 'localhost',
       port: 5432,
-      username: 'wiensr',
-      password: 'jYvOfy5Gk8oRxfOb1ZFdfotUcrQv23Ai',
+      username: 'postgres',
+      password: 'admin',
       database: 'wjournal',
       entities: [UserEntity, PostEntity, CommentEntity],
-      synchronize: true,
-      ssl: true
+      synchronize: true
     }),
     UserModule,
     PostModule,
